@@ -16,7 +16,7 @@ export default{
 </script>
 
 <template>
-
+Not Found
 </template>
 
 <style lang ="scss" scoped>

@@ -23,13 +23,12 @@ export default{
 </script>
 
 <template>
-	<h1>My template Vite Vue Sass</h1>
 	<AppHeader/>
 	<AppMain/>
 	<AppFooter/>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @use"assets/scss/main.scss" as *;
-@import "assets/scss/partials/reset.scss";
+@import "bootstrap/scss/bootstrap";
 </style>

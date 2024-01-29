@@ -30,5 +30,6 @@ export default{
 
 <style lang="scss">
 @use"assets/scss/main.scss" as *;
+@use "assets/scss/partials/variables.scss" as *;
 @import "bootstrap/scss/bootstrap";
 </style>

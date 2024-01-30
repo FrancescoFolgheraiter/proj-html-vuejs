@@ -2,7 +2,34 @@
 export default{
 	data() {
 		return{
-			text:"Header"
+			socials: [
+				{
+					app: "Facebook",
+					color: "#3744B3",
+					icon: "fa-brands fa-facebook"
+				},
+				{
+					app: "Twitter",
+					color: "#7CC6C5",
+					icon: "fa-brands fa-twitter"
+				},
+				{
+					app: "Instagram",
+					color: "#A329A8",
+					icon: "fa-brands fa-instagram"
+				},
+				{
+					app: "Linkedin",
+					color: "#1164C2",
+					icon: "fa-brands fa-linkedin"
+				},
+				{
+					app: "Pinterest",
+					color: "#B61220",
+					icon: "fa-brands fa-pinterest"
+				}
+
+			]
 		};
 	},
 	components:{
@@ -29,20 +56,9 @@ export default{
 						+0 123-456-7890
 					</div>
 					<div class="col socials">
-						<div class="facebook">
-							<i class="fa-brands fa-facebook"></i>
-						</div>
-						<div class="twitter">
-							<i class="fa-brands fa-twitter"></i>
-						</div>
-						<div class="instagram">
-							<i class="fa-brands fa-instagram"></i>
-						</div>
-						<div class="linkedin">
-							<i class="fa-brands fa-linkedin"></i>
-						</div>
-						<div class="pinterest">
-							<i class="fa-brands fa-pinterest"></i>
+						<div v-for="(social, i) in socials" 
+						:style="{backgroundColor: social.color}">
+							<i :class="social.icon"></i>
 						</div>
 						
 					</div>
@@ -152,23 +168,7 @@ export default{
 		}
 	}
 }
-.facebook {
-	background-color: #3744B3;
-}
 
-.twitter {
-	background-color: #7CC6C5;
-}
-
-.instagram {
-	background-color: #A329A8;	
-}
-.linkedin {
-	background-color: #1164C2;
-}
-.pinterest {
-	background-color: #B61220;
-}
 .main-header {	
 	height: 80px;
 	display: flex;	

@@ -36,7 +36,7 @@ export default{
 					userName:"Tobias May",
 					userType:"UI/Ux Designer",
 					userImage:"t1.png",
-					star:5
+					stars:4
 				},
 				{
 					title:"Great Place",
@@ -44,7 +44,7 @@ export default{
 					userName:"Tobias May",
 					userType:"UI/Ux Designer",
 					userImage:"t1.png",
-					star:5
+					stars:5
 				},
 			]
 		};
@@ -66,19 +66,19 @@ export default{
 	<section id="welcome">
 		<div class = "container">
 			<div class = "row">
-				<div class = "col-5 d-flex flex-column justify-content-center">
-					<h2>
-						Welcome to DogMilo Pets
+				<div class = "col-5 d-flex flex-column justify-content-center text-white ">
+					<h2 class="mb-4">
+						Welcome to <br> <span class="fw-normal">DogMilo</span>  Pets
 					</h2>
-					<p>
+					<p class="mb-4">
 						Lorem Ipsum is simply dummy text of the printing and typesetting industry.
 					</p>
-					<div>
-						<button>
+					<div class="d-flex align-items-center">
+						<button id="get-started" class="me-4">
 							Get Started
 						</button>
-						<button>
-							Play
+						<button id="play">
+							<i class="fa-regular fa-circle-play fa-2x"></i>
 						</button>
 					</div>
 				</div>
@@ -226,9 +226,9 @@ export default{
 					</p>
 				</div>
 				<div class="col-7 d-flex">
-					<div v-for="(elem,i) in review" class="card-review">
+					<div v-for="(elem,i) in review" :key="i" class="card-review">
 						<div>
-							{{ elem.star }}
+							<i class="fa-solid fa-star" v-for="(font,j) in 5" :key="j" :class="{yellowStar: elem.stars > j}"></i>
 						</div>
 						<h4>
 							{{ elem.title }}
@@ -262,16 +262,34 @@ export default{
 //section welcome
 #welcome{
 	background-image: url(/img/b.png);
-	min-height: 500px;
+	min-height: 550px;
 	background-size: cover;
 	> .container, .col-5{
 		min-height: 500px;
+
+		#get-started{
+			border:none;
+			border-radius: 25px;
+			padding:15px 20px;
+			background-color: $second-color;
+			color:white;
+			font-weight: bold;
+		}
+
+		#play{
+			border:none;
+			border-radius: 5px;
+			padding:8px 10px;
+			background-color: #00D7EC;
+			color:white;
+		}
 	}
 
 }
 //section about
 #about{
 	min-height: 500px;
+	padding: 70px 0;
 	background-color: $bg-main-section;
 	background-image: url(/img/dog-logo.png);
 	background-repeat: no-repeat;
@@ -287,6 +305,7 @@ export default{
 //section service
 #service{
 	min-height: 500px;
+	padding: 70px 0;
 	background-color: $bg-second-section;
 	background-image: url(/img/dog-left.png);
 	background-repeat: no-repeat;
@@ -317,6 +336,7 @@ export default{
 }
 //section choos us
 #choose-us{
+	background-color: $bg-main-section;
 //colonna dell'immagine grande della section choose us
 	.col-5:first-child{
 		.my-img-container{
@@ -328,6 +348,7 @@ export default{
 	}
 //seconda colonna dove è contenuto il testo della section choose us
 	.col-5:last-child{
+		padding: 70px 0;
 		.my-img-container{
 			max-width: 110px;
 			img{
@@ -338,7 +359,19 @@ export default{
 }
 //section review
 #review{
+	background-color: $bg-main-section;
+	min-height: 500px;
+	padding: 70px 0;
 	.card-review{
+		background-color: $bg-second-section;
+		padding:10px 10px;
+		margin:0 20px;
+		border-radius: 15px;
+		border:1px solid grey;
+
+		.yellowStar{
+			color:goldenrod;
+		}
 		.my-img-container{
 			width: 60px;
 			

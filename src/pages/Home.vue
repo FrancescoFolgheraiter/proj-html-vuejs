@@ -28,6 +28,24 @@ export default{
 					text: "The readable content of a page when looking at is layout",
 					image: "d-5.png"
 				},
+			],
+			review:[
+				{
+					title:"Great Place",
+					text:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when",
+					userName:"Tobias May",
+					userType:"UI/Ux Designer",
+					userImage:"t1.png",
+					star:5
+				},
+				{
+					title:"Great Place",
+					text:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when",
+					userName:"Tobias May",
+					userType:"UI/Ux Designer",
+					userImage:"t1.png",
+					star:5
+				},
 			]
 		};
 	},
@@ -48,7 +66,7 @@ export default{
 	<section id="welcome">
 		<div class = "container">
 			<div class = "row">
-				<div class = "col-4 d-flex flex-column justify-content-center">
+				<div class = "col-5 d-flex flex-column justify-content-center">
 					<h2>
 						Welcome to DogMilo Pets
 					</h2>
@@ -72,12 +90,12 @@ export default{
 	<section id="about">
 		<div class="container">
 			<div class="row">
-				<div class="col-4">
+				<div class="col-5">
 					<div class="my-img-container">
 						<img src="/img/about.png" alt="">
 					</div>
 				</div>
-				<div class="col-8">
+				<div class="col-7">
 					<h3>
 						[img]About Us
 					</h3>
@@ -145,7 +163,7 @@ export default{
 							Why Choose Us?
 						</p>
 					</div>
-					<div class="col-12">
+					<div class="col-12 d-flex">
 						<div class="my-img-container">
 							<img src="/img/w-3.png" alt="">
 						</div>
@@ -158,30 +176,100 @@ export default{
 							</p>
 						</div>
 					</div>
-					<div class=" offset-2">
-
+					<div class="col-12 d-flex">
+						<div class="my-img-container">
+							<img src="/img/w-2.png" alt="">
+						</div>
 					</div>
-					<div class="col-8">
-						prova
+					<div>
+						<h4>
+							Play Yards
+						</h4>
+						<p>
+							It is long established fact that a readr will be distructed by the readable content of a page when lookign in its layout.
+						</p>
+					</div>
+					<div class="col-12 d-flex">
+						<div class="my-img-container">
+							<img src="/img/w-1.png" alt="">
+						</div>
+					</div>
+					<div>
+						<h4>
+							Monitor Your Pets
+						</h4>
+						<p>
+							It is long established fact that a readr will be distructed by the readable content of a page when lookign in its layout.
+						</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 	<!--fine quarta sezione-->
+	<!--quinta sezione-->
+	<section id="review">
+		<div class="container">
+			<div class="row">
+				<div class="col-5">
+					<h3>
+						[img] Review & Raiting
+					</h3>
+					<h4>
+						Over 8000 Customers
+					</h4>
+					<h4>
+						With 5-Star Review
+					</h4>
+					<p>
+						It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using
+					</p>
+				</div>
+				<div class="col-7 d-flex">
+					<div v-for="(elem,i) in review" class="card-review">
+						<div>
+							{{ elem.star }}
+						</div>
+						<h4>
+							{{ elem.title }}
+						</h4>
+						<p>
+							{{ elem.text }}
+						</p>
+						<div class="user d-flex">
+							<div class="my-img-container">
+								<img :src="getImagePath('/img/'+ elem.userImage)" alt="">
+							</div>
+							<div>
+								<h5>
+									{{ elem.userName }}
+								</h5>
+								<h5>
+									{{ elem.userType }}
+								</h5>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--fine quinta sezione-->
 </template>
 
 <style lang ="scss" scoped>
 @use "../assets/scss/partials/variables.scss" as *;
+//section welcome
 #welcome{
 	background-image: url(/img/b.png);
 	min-height: 500px;
 	background-size: cover;
-	> .container, .col-4{
+	> .container, .col-5{
 		min-height: 500px;
 	}
 
 }
+//section about
 #about{
 	min-height: 500px;
 	background-color: $bg-main-section;
@@ -189,13 +277,14 @@ export default{
 	background-repeat: no-repeat;
 	background-position: right;
 	.my-img-container{
-		width: 350px;
+		width: 450px;
 
 		img{
 			width: 100% ;
 		}
 	}
 }
+//section service
 #service{
 	min-height: 500px;
 	background-color: $bg-second-section;
@@ -209,6 +298,7 @@ export default{
 		border-radius: 40%;
 		.my-img-container{
 			width:75px;
+			padding: 10px;
 			img{
 				width: 100%;
 			}
@@ -221,6 +311,40 @@ export default{
 	
 			img{
 				height: 100%;
+			}
+		}
+	}
+}
+//section choos us
+#choose-us{
+//colonna dell'immagine grande della section choose us
+	.col-5:first-child{
+		.my-img-container{
+					max-width: 600px;
+				img{
+					width: 100%;
+				}	
+		}
+	}
+//seconda colonna dove è contenuto il testo della section choose us
+	.col-5:last-child{
+		.my-img-container{
+			max-width: 110px;
+			img{
+				width:100%;
+			}
+		}
+	}
+}
+//section review
+#review{
+	.card-review{
+		.my-img-container{
+			width: 60px;
+			
+			img{
+				width:100%;
+				border-radius:50%;
 			}
 		}
 	}

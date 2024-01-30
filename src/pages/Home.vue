@@ -105,9 +105,14 @@ export default{
 					</div>
 				</div>
 				<div class="col-7">
-					<h3>
-						[img]About Us
-					</h3>
+					<div class="d-flex align-items-center ">
+						<div class="dog-logo">
+							<img src="/img/dog-icon.png" alt="">
+						</div>
+						<h3>
+							About Us
+						</h3>
+					</div>
 					<h4>
 						Welcome DogMilo Pets
 					</h4>
@@ -130,23 +135,27 @@ export default{
 					<h3>
 						Service
 					</h3>
-					<p>
+					<h4>
 						DogMilo Pet care Services <br> For your best Friends
-					</p>
+					</h4>
 				</div>
 				<div v-for="(elem, i) in service" class="col-2 flex-grow-1">
-					<div class="card-service text-white d-flex flex-column justify-content-center align-items-center p-3">
-						<div class="my-img-container">
+					<div class="card-service text-white text-center d-flex flex-column justify-content-center align-items-center p-3">
+						<div class="my-img-container mb-2">
 							<img :src="getImagePath('/img/' + elem.image)" alt="">
 						</div>
-						<div>
-							{{ elem.title }}
+						<div class="mb-2">
+							<h5>
+								{{ elem.title }}
+							</h5>
 						</div>
-						<div>
+						<div class="mb-4">
 							{{ elem.text }}
 						</div>
-						<div class="my-arrow-container">
-							<img src="/img/right.png" alt="">
+						<div class="circle d-flex justify-content-center align-items-center">
+							<div class="my-arrow-container">
+								<img src="/img/right.png" alt="">
+							</div>
 						</div>
 					</div>
 				</div>
@@ -165,21 +174,26 @@ export default{
 			<div class="col-5">
 				<div class="row">
 					<div class="col-12">
-						<h3>
-							[img]Choose Us
-						</h3>
-						<p>
+						<div class="d-flex align-items-center ">
+							<div class="dog-logo">
+								<img src="/img/dog-icon.png" alt="">
+							</div>
+							<h3>
+								Choose Us
+							</h3>
+						</div>
+						<h4>
 							Why Choose Us?
-						</p>
+						</h4>
 					</div>
 					<div class="col-12 d-flex">
 						<div class="my-img-container">
 							<img src="/img/w-3.png" alt="">
 						</div>
 						<div>
-							<h4>
+							<h5>
 								Safety First
-							</h4>
+							</h5>
 							<p>
 								It is long established fact that a readr will be distructed by the readable content of a page when lookign in its layout.
 							</p>
@@ -191,9 +205,9 @@ export default{
 						</div>
 					</div>
 					<div>
-						<h4>
+						<h5>
 							Play Yards
-						</h4>
+						</h5>
 						<p>
 							It is long established fact that a readr will be distructed by the readable content of a page when lookign in its layout.
 						</p>
@@ -204,9 +218,9 @@ export default{
 						</div>
 					</div>
 					<div>
-						<h4>
+						<h5>
 							Monitor Your Pets
-						</h4>
+						</h5>
 						<p>
 							It is long established fact that a readr will be distructed by the readable content of a page when lookign in its layout.
 						</p>
@@ -221,21 +235,18 @@ export default{
 		<div class="container">
 			<div class="row">
 				<div class="col-5">
-					<h3>
-						[img] Review & Raiting
+					<h3 class="text-center">
+						Review & Raiting
 					</h3>
 					<h4>
-						Over 8000 Customers
-					</h4>
-					<h4>
-						With 5-Star Review
+						Over 8000 Customers <br> With 5-Star Review
 					</h4>
 					<p>
 						It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using
 					</p>
 				</div>
 				<div class="col-7 d-flex">
-					<div v-for="(elem,i) in review" :key="i" class="card-review">
+					<div v-for="(elem,i) in review" :key="i" class="card-review p-4">
 						<div>
 							<i class="fa-solid fa-star" v-for="(font,j) in 5" :key="j" :class="{yellowStar: elem.stars > j}"></i>
 						</div>
@@ -258,6 +269,9 @@ export default{
 								</h5>
 							</div>
 						</div>
+						<div class="yellowBar">
+							<!--barra laterale card-->
+						</div>
 					</div>
 				</div>
 			</div>
@@ -268,6 +282,25 @@ export default{
 
 <style lang ="scss" scoped>
 @use "../assets/scss/partials/variables.scss" as *;
+//general
+h3{
+	color:#838586;
+	font-size: 1.2rem;
+	margin-bottom: 20px;
+}
+h4{
+	font-size: 2rem;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+.dog-logo{
+	width: 50px;
+	margin-bottom: 20px;
+	margin-right:10px;
+	img{
+		width:100%
+	}
+}
 //section welcome
 #welcome{
 	background-image: url(/img/b.png);
@@ -283,12 +316,12 @@ export default{
 			background-color: $second-color;
 			color:white;
 			font-weight: bold;
+			transition: background-color .2s ease-in-out, color .2s ease-in-out;
 
 			&:hover{
 				background-color: $bg-main-section;
 				color:black;
 				text-decoration: underline;
-				transition: background-color .2s ease-in-out;
 			}
 		}
 
@@ -320,6 +353,8 @@ export default{
 			z-index: 1;
 			>div{
 				position: absolute;
+				background-color: white;
+				padding:100px;
 				top:50%;
 				left:50%;
 				transform: translate(-50%, -50%);
@@ -369,14 +404,16 @@ export default{
 				width: 100%;
 			}
 		}
-		.my-arrow-container{
+		.circle{
 			width: 50px;
 			height: 50px;
 			border-radius: 50%;
 			background-color: $bg-button-home;
-	
-			img{
-				height: 100%;
+			.my-arrow-container{
+				height:25px;
+				img{
+					height: 100%;
+				}
 			}
 		}
 	}
@@ -410,12 +447,22 @@ export default{
 	min-height: 500px;
 	padding: 70px 0;
 	.card-review{
+		position: relative;
 		background-color: $bg-second-section;
 		padding:10px 10px;
 		margin:0 20px;
 		border-radius: 15px;
-		border:1px solid grey;
 
+		.yellowBar{
+			height: 180px;
+			width: 3px;
+			position: absolute;
+			left:0;
+			top:15%;
+			z-index: 1;
+			border-radius: 25%;
+			background-color:goldenrod;
+		}
 		.yellowStar{
 			color:goldenrod;
 		}

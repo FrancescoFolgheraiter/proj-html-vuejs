@@ -46,7 +46,8 @@ export default{
 					userImage:"t1.png",
 					stars:5
 				},
-			]
+			],
+			flagModal:false,
 		};
 	},
 	components:{
@@ -55,6 +56,9 @@ export default{
 	methods:{
 		getImagePath: function(imgPath){
 			return new URL(imgPath, import.meta.url).href;
+		},
+		openModal(){
+			this.flagModal = !(this.flagModal)
 		}
 	}
 }
@@ -77,9 +81,14 @@ export default{
 						<button id="get-started" class="me-4">
 							Get Started
 						</button>
-						<button id="play">
+						<button id="play" @focus="openModal">
 							<i class="fa-regular fa-circle-play fa-2x"></i>
 						</button>
+						<div v-if="(this.flagModal)" id="modalYoutube" @click="openModal">
+							<div>
+								<iframe width="700" height="350" src="https://www.youtube.com/embed/c1NgIvjXCMA?si=6dZobOJ7YuC0HSC8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -274,14 +283,48 @@ export default{
 			background-color: $second-color;
 			color:white;
 			font-weight: bold;
+
+			&:hover{
+				background-color: $bg-main-section;
+				color:black;
+				text-decoration: underline;
+				transition: background-color .2s ease-in-out;
+			}
 		}
 
 		#play{
 			border:none;
 			border-radius: 5px;
-			padding:8px 10px;
+			padding:8px 20px;
 			background-color: #00D7EC;
 			color:white;
+			transition: background-color .2s ease-in-out, color .2s ease-in-out;
+
+			&:hover{
+				background-color: $second-color;
+			}
+
+			&:focus{
+				color:#173b67;
+			}
+		}
+		#modalYoutube{
+			width: 100vw;
+			height: 100vh;
+			opacity: 0.5;
+			background-color: black;
+			position: absolute;
+			top:50%;
+			left:50%;
+			transform: translate(-50%, -50%);
+			z-index: 1;
+			>div{
+				position: absolute;
+				top:50%;
+				left:50%;
+				transform: translate(-50%, -50%);
+				z-index: 2;
+			}
 		}
 	}
 
@@ -315,6 +358,10 @@ export default{
 		background-color: $second-color;
 		min-height: 350px;
 		border-radius: 40%;
+
+		&:hover{
+			background-color: $main-color;
+		}
 		.my-img-container{
 			width:75px;
 			padding: 10px;

@@ -26,7 +26,7 @@ export default{
 				{
 					title: "Pet Sitting",
 					text: "The readable content of a page when looking at is layout",
-					image: "d-2.png"
+					image: "d-5.png"
 				},
 			]
 		};
@@ -35,7 +35,9 @@ export default{
 		
 	},
 	methods:{
-
+		getImagePath: function(imgPath){
+			return new URL(imgPath, import.meta.url).href;
+		}
 	}
 }
 
@@ -46,7 +48,7 @@ export default{
 	<section id="welcome">
 		<div class = "container">
 			<div class = "row">
-				<div class = "col-4 d-flex justify-content-center flex-column align-items-center">
+				<div class = "col-4 d-flex flex-column justify-content-center">
 					<h2>
 						Welcome to DogMilo Pets
 					</h2>
@@ -93,30 +95,135 @@ export default{
 		</div>
 	</section>
 	<!--fine seconda sezione-->
+	<!--terza sezione-->
+	<section id="service">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 text-center">
+					<h3>
+						Service
+					</h3>
+					<p>
+						DogMilo Pet care Services <br> For your best Friends
+					</p>
+				</div>
+				<div v-for="(elem, i) in service" class="col-2 flex-grow-1">
+					<div class="card-service text-white d-flex flex-column justify-content-center align-items-center p-3">
+						<div class="my-img-container">
+							<img :src="getImagePath('/img/' + elem.image)" alt="">
+						</div>
+						<div>
+							{{ elem.title }}
+						</div>
+						<div>
+							{{ elem.text }}
+						</div>
+						<div class="my-arrow-container">
+							<img src="/img/right.png" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--fine terza sezione-->
+	<!--quarta sezione-->
+	<section id="choose-us">
+		<div class="row">
+			<div class="col-5">
+				<div class="my-img-container">
+					<img src="/img/why.png" alt="">
+				</div>
+			</div>
+			<div class="col-5">
+				<div class="row">
+					<div class="col-12">
+						<h3>
+							[img]Choose Us
+						</h3>
+						<p>
+							Why Choose Us?
+						</p>
+					</div>
+					<div class="col-12">
+						<div class="my-img-container">
+							<img src="/img/w-3.png" alt="">
+						</div>
+						<div>
+							<h4>
+								Safety First
+							</h4>
+							<p>
+								It is long established fact that a readr will be distructed by the readable content of a page when lookign in its layout.
+							</p>
+						</div>
+					</div>
+					<div class=" offset-2">
+
+					</div>
+					<div class="col-8">
+						prova
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--fine quarta sezione-->
 </template>
 
 <style lang ="scss" scoped>
 @use "../assets/scss/partials/variables.scss" as *;
 #welcome{
 	background-image: url(/img/b.png);
-	height: 500px;
+	min-height: 500px;
 	background-size: cover;
-	> .container, .row, .col-4{
-		height: 100%;
+	> .container, .col-4{
+		min-height: 500px;
 	}
+
 }
 #about{
-	height: 500px;
+	min-height: 500px;
 	background-color: $bg-main-section;
 	background-image: url(/img/dog-logo.png);
 	background-repeat: no-repeat;
-	background-position-y: center;
 	background-position: right;
 	.my-img-container{
-		height: 350px;
+		width: 350px;
+
 		img{
-			height: 100%;
+			width: 100% ;
 		}
 	}
 }
+#service{
+	min-height: 500px;
+	background-color: $bg-second-section;
+	background-image: url(/img/dog-left.png);
+	background-repeat: no-repeat;
+	background-position-y: center;
+	background-position: left;
+	.card-service{
+		background-color: $second-color;
+		min-height: 350px;
+		border-radius: 40%;
+		.my-img-container{
+			width:75px;
+			img{
+				width: 100%;
+			}
+		}
+		.my-arrow-container{
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			background-color: $bg-button-home;
+	
+			img{
+				height: 100%;
+			}
+		}
+	}
+}
+
 </style>

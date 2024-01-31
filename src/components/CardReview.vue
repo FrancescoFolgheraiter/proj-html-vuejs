@@ -33,7 +33,7 @@ export default{
 			{{ userObj.text }}
 		</p>
 		<div class="user d-flex">
-			<div class="my-img-container">
+			<div class="my-img-container me-3">
 				<img :src="getImagePath('/img/'+ userObj.userImage)" :alt="userObj.userName ">
 			</div>
 			<div>
@@ -59,7 +59,7 @@ export default{
 	padding:10px 10px;
 	margin:0 20px;
 	border-radius: 15px;
-
+	
 	.yellowBar{
 		height: 180px;
 		width: 3px;
@@ -84,6 +84,13 @@ export default{
 			height: 100%;
 			object-fit: cover;
 		}
+	}
+	h5:first-of-type{
+		font-weight: bold;
+	}
+
+	h5{
+		font-size: 0.8rem;
 	}
 }
 </style>

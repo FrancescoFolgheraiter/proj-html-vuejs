@@ -111,7 +111,6 @@ export default{
 									</div>
 									<div class="modal-body">
 										<iframe width="700" height="350" src="https://www.youtube.com/embed/c1NgIvjXCMA?si=6dZobOJ7YuC0HSC8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-							
 									</div>
 								</div>
 							</div>
@@ -218,7 +217,7 @@ export default{
 						</h4>
 					</div>
 					<div class="col-12 d-flex">
-						<div class="my-img-container">
+						<div class="my-img-container me-4">
 							<img src="/img/w-3.png" alt="">
 						</div>
 						<div>
@@ -230,8 +229,8 @@ export default{
 							</p>
 						</div>
 					</div>
-					<div class="col-12 d-flex">
-						<div class="my-img-container">
+					<div class="col-12 d-flex ">
+						<div class="my-img-container me-4">
 							<img src="/img/w-2.png" alt="">
 						</div>
 						<div>
@@ -243,8 +242,8 @@ export default{
 							</p>
 						</div>
 					</div>
-					<div class="col-12 d-flex">
-						<div class="my-img-container">
+					<div class="col-12 d-flex ">
+						<div class="my-img-container me-4">
 							<img src="/img/w-1.png" alt="">
 						</div>
 						<div>

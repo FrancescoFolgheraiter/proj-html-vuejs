@@ -28,4 +28,38 @@ export const store =reactive ({
             icon: "fa-brands fa-pinterest"
         }
     ],
+    review:[
+        {
+            title:"Good Place",
+            text:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when",
+            userName:"Tobias May",
+            userType:"UI/Ux Designer",
+            userImage:"t1.png",
+            stars:4
+        },
+        {
+            title:"Great Place",
+            text:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when",
+            userName:"Anna Brown",
+            userType:"UI/Ux Designer",
+            userImage:"t2.png",
+            stars:5
+        },
+        {
+            title:"Good Place",
+            text:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when",
+            userName:"Charlotte Miller",
+            userType:"UI/Ux Designer",
+            userImage:"t3.png",
+            stars:4
+        },
+        {
+            title:"Great Place",
+            text:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when",
+            userName:"Sophia Jones",
+            userType:"UI/Ux Designer",
+            userImage:"t4.png",
+            stars:5
+        },
+    ]
 });

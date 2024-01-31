@@ -189,7 +189,7 @@ export default{
 
 		background-color: #F5F5F5;
 		text-align: center;
-		padding: auto 50px;
+		padding: 0px 50px 100px;
 
 		.intro-sect {
 			font-size: 1.1rem;

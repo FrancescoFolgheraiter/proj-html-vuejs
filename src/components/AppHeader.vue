@@ -29,6 +29,24 @@ export default{
 					icon: "fa-brands fa-pinterest"
 				}
 
+			],
+			navigatioItems: [
+				{
+					label: 'Home',
+					route: '/'
+				},
+				{
+					label: 'About',
+					route: '/about'
+				},
+				{
+					label: 'Services',
+					route: '/services'
+				},
+				{
+					label: 'Contact',
+					link: '/contact'
+				},
 			]
 		};
 	},
@@ -74,9 +92,37 @@ export default{
 						<img src="/img/logo.png" alt="">
 					</div>
 
-					<div class="col-9">
+					<div class="col-9 prova-nav">
 
-						<nav class="navbar navbar-expand-lg">
+						<nav>
+							<ul>
+								<li>
+									<routerLink :to="{name: 'home'}">
+										Home
+									</routerLink>									
+								</li>
+								<li>
+									<routerLink :to="{name: 'about'}">
+										About
+									</routerLink>									
+								</li>
+								<li>
+									<routerLink :to="{name: 'service'}">
+										Services
+									</routerLink>									
+								</li>
+								<li>
+									Training
+								</li>
+								<li>
+									Blogs
+								</li>
+								<button class="rounded-pill">
+									Get In Touch
+								</button>
+							</ul>
+						</nav>
+<!--<nav class="navbar navbar-expand-lg">
 						
 							<div id="navbarNavDropdown">
 								<ul class="navbar-nav">
@@ -118,7 +164,8 @@ export default{
 								
 								</ul>
 							</div>
-						</nav>
+						</nav> -->
+						
 					</div>
 
 				</div>
@@ -193,6 +240,29 @@ button {
 .col-9 {
 	justify-content: space-between;
 	align-items: center;
+}
+.prova-nav {
+	nav {
+		color: #fff;
+		padding: 10px;
+
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+
+			li, a {
+				display: inline-block;
+				margin-right: 10px;	
+				color: $text-color;
+				text-decoration: none;
+				
+				
+
+			}
+		}
+	
+	}
 }
 .navbar-expand-lg {
     flex-wrap: wrap;

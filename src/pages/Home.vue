@@ -1,4 +1,7 @@
 <script>
+//importazione js bootstrap
+import * as bootstrap from 'bootstrap';
+
 export default{
 	data() {
 		return{
@@ -47,7 +50,6 @@ export default{
 					stars:5
 				},
 			],
-			flagModal:false,
 		};
 	},
 	components:{
@@ -57,9 +59,6 @@ export default{
 		getImagePath: function(imgPath){
 			return new URL(imgPath, import.meta.url).href;
 		},
-		openModal(){
-			this.flagModal = !(this.flagModal)
-		}
 	}
 }
 
@@ -78,17 +77,28 @@ export default{
 						Lorem Ipsum is simply dummy text of the printing and typesetting industry.
 					</p>
 					<div class="d-flex align-items-center">
-						<button id="get-started" class="me-4">
+						<button  type="button" id="get-started" class="me-4">
 							Get Started
 						</button>
-						<button id="play" @focus="openModal">
+						<button type="button" id="play" @focus="openModal" data-bs-toggle="modal" data-bs-target="#videoYoutube">
 							<i class="fa-regular fa-circle-play fa-2x"></i>
 						</button>
-						<div v-if="(this.flagModal)" id="modalYoutube" @click="openModal">
-							<div>
-								<iframe width="700" height="350" src="https://www.youtube.com/embed/c1NgIvjXCMA?si=6dZobOJ7YuC0HSC8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+						<!-- modal youtube-->
+						<div class="modal fade modal-lg" id="videoYoutube" tabindex="-1" aria-labelledby="videoYoutubeLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header bg-blue">
+										<h1 class="modal-title fs-5" id="videoYoutubeLabel">Dog Milo</h1>
+										<button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										<iframe width="700" height="350" src="https://www.youtube.com/embed/c1NgIvjXCMA?si=6dZobOJ7YuC0HSC8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+							
+									</div>
+								</div>
 							</div>
 						</div>
+						<!--fine modal youtube-->
 					</div>
 				</div>
 			</div>
@@ -203,27 +213,27 @@ export default{
 						<div class="my-img-container">
 							<img src="/img/w-2.png" alt="">
 						</div>
-					</div>
-					<div>
-						<h5>
-							Play Yards
-						</h5>
-						<p>
-							It is long established fact that a readr will be distructed by the readable content of a page when lookign in its layout.
-						</p>
+						<div>
+							<h5>
+								Play Yards
+							</h5>
+							<p>
+								It is long established fact that a readr will be distructed by the readable content of a page when lookign in its layout.
+							</p>
+						</div>
 					</div>
 					<div class="col-12 d-flex">
 						<div class="my-img-container">
 							<img src="/img/w-1.png" alt="">
 						</div>
-					</div>
-					<div>
-						<h5>
-							Monitor Your Pets
-						</h5>
-						<p>
-							It is long established fact that a readr will be distructed by the readable content of a page when lookign in its layout.
-						</p>
+						<div>
+							<h5>
+								Monitor Your Pets
+							</h5>
+							<p>
+								It is long established fact that a readr will be distructed by the readable content of a page when lookign in its layout.
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -301,6 +311,8 @@ h4{
 		width:100%
 	}
 }
+
+
 //section welcome
 #welcome{
 	background-image: url(/img/b.png);
@@ -341,25 +353,9 @@ h4{
 				color:#173b67;
 			}
 		}
-		#modalYoutube{
-			width: 100vw;
-			height: 100vh;
-			opacity: 0.5;
-			background-color: black;
-			position: absolute;
-			top:50%;
-			left:50%;
-			transform: translate(-50%, -50%);
-			z-index: 1;
-			>div{
-				position: absolute;
-				background-color: white;
-				padding:100px;
-				top:50%;
-				left:50%;
-				transform: translate(-50%, -50%);
-				z-index: 2;
-			}
+
+		.bg-blue{
+			background-color:#173b67;
 		}
 	}
 

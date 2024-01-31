@@ -1,7 +1,13 @@
 <script>
+import  { store }  from './store.js';
+
+
 export default{
 	data() {
 		return{
+
+			store,
+
 			lists: [
 				{
 					title: "Support",
@@ -34,8 +40,6 @@ export default{
 					]
 				}
 			],
-			Socials: [],
-			Contacts:[]
 		};
 	},
 	components:{
@@ -66,20 +70,51 @@ export default{
 				</div>
 			</div>
 		</section>
-		<section class="links-and-contacts">
-			<ul>
-				<li v-for="(listItem, i) in lists" >
-					<ul>{{ listItem.title }}
-						<li v-for = "(link, j) in lists[i].links">
-							{{ listItem.links[j] }}
-						</li>
-					</ul>
-					
-				</li>
-			</ul>
-		</section>
 
-		footer
+		<div class="lists-sections">
+			<section class="get-in-touch">
+				<h3>Get In Touch</h3>
+				<p>
+					Have a Question for us ?
+					We'll answer your problem here
+				</p>
+				<p v-for="(social, i) in store.socials">
+					<i :class="social.icon"></i>
+				</p>
+			</section>
+			<section class="links-and-contacts">
+				<ul>
+					<li v-for="(listItem, i) in lists">
+						<h3>
+							{{ listItem.title }}
+						</h3>
+						<ul>
+							<li v-for = "(link, j) in lists[i].links">
+								{{ listItem.links[j] }}
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class="contact-me">
+				<h3>Contact Me</h3>
+
+				<ul>
+					<li>
+						<div class="">freccia</div>
+						<div class="">4500 Mercantile plaza , Suite 300 , Fort Worth , TX,76137,USA</div>
+					</li>
+					<li>
+						<div class=""></div>
+						<div class="">+0 123-456-7890</div>
+					</li>
+					<li>
+						<div class="">posta</div>
+						<div class="">info@example.com</div>
+					</li>
+				</ul>
+			</section>
+		</div>
 	</footer>
 </template>
 

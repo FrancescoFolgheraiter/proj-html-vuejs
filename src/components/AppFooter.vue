@@ -50,7 +50,7 @@ export default{
 
 <template>
 	<footer>
-		<!-- <section class="footer-newsletter">
+		<section class="footer-newsletter">
 			<div class="newsletter">
 				<div class="img-newsletter">
 					<img src="/img/news.png" alt="news.png">
@@ -68,16 +68,16 @@ export default{
 		</section>
 		<section class="links-and-contacts">
 			<ul>
-				<li v-for="(listItem, i) in lists">
+				<li v-for="(listItem, i) in lists" >
 					<ul>{{ listItem.title }}
-						<li v-for = "(link, j) in lists.length">
+						<li v-for = "(link, j) in lists[i].links">
 							{{ listItem.links[j] }}
 						</li>
 					</ul>
 					
 				</li>
 			</ul>
-		</section> -->
+		</section>
 
 		footer
 	</footer>

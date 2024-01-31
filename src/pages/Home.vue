@@ -2,6 +2,8 @@
 //importazione js bootstrap
 import * as bootstrap from 'bootstrap';
 
+import AppCarosello from '../components/AppCarosello.vue';
+
 export default{
 	data() {
 		return{
@@ -34,7 +36,7 @@ export default{
 			],
 			review:[
 				{
-					title:"Great Place",
+					title:"Good Place",
 					text:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when",
 					userName:"Tobias May",
 					userType:"UI/Ux Designer",
@@ -44,16 +46,32 @@ export default{
 				{
 					title:"Great Place",
 					text:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when",
-					userName:"Tobias May",
+					userName:"Anna Brown",
 					userType:"UI/Ux Designer",
-					userImage:"t1.png",
+					userImage:"t2.png",
+					stars:5
+				},
+				{
+					title:"Good Place",
+					text:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when",
+					userName:"Charlotte Miller",
+					userType:"UI/Ux Designer",
+					userImage:"t3.png",
+					stars:4
+				},
+				{
+					title:"Great Place",
+					text:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when",
+					userName:"Sophia Jones",
+					userType:"UI/Ux Designer",
+					userImage:"t4.png",
 					stars:5
 				},
 			],
 		};
 	},
 	components:{
-		
+		AppCarosello
 	},
 	methods:{
 		getImagePath: function(imgPath){
@@ -176,10 +194,13 @@ export default{
 	<!--quarta sezione-->
 	<section id="choose-us">
 		<div class="row">
-			<div class="col-5">
+			<div class="col-4">
 				<div class="my-img-container">
 					<img src="/img/why.png" alt="">
 				</div>
+			</div>
+			<div class="col-1">
+				<!--colonna vuota per staccare il contenuto-->
 			</div>
 			<div class="col-5">
 				<div class="row">
@@ -245,7 +266,7 @@ export default{
 		<div class="container">
 			<div class="row">
 				<div class="col-5">
-					<h3 class="text-center">
+					<h3 class="ps-5">
 						Review & Raiting
 					</h3>
 					<h4>
@@ -256,33 +277,7 @@ export default{
 					</p>
 				</div>
 				<div class="col-7 d-flex">
-					<div v-for="(elem,i) in review" :key="i" class="card-review p-4">
-						<div>
-							<i class="fa-solid fa-star" v-for="(font,j) in 5" :key="j" :class="{yellowStar: elem.stars > j}"></i>
-						</div>
-						<h4>
-							{{ elem.title }}
-						</h4>
-						<p>
-							{{ elem.text }}
-						</p>
-						<div class="user d-flex">
-							<div class="my-img-container">
-								<img :src="getImagePath('/img/'+ elem.userImage)" alt="">
-							</div>
-							<div>
-								<h5>
-									{{ elem.userName }}
-								</h5>
-								<h5>
-									{{ elem.userType }}
-								</h5>
-							</div>
-						</div>
-						<div class="yellowBar">
-							<!--barra laterale card-->
-						</div>
-					</div>
+					<AppCarosello/>
 				</div>
 			</div>
 		</div>
@@ -418,9 +413,9 @@ h4{
 #choose-us{
 	background-color: $bg-main-section;
 //colonna dell'immagine grande della section choose us
-	.col-5:first-child{
+	.col-4:first-child{
 		.my-img-container{
-					max-width: 600px;
+					max-width: 500px;
 				img{
 					width: 100%;
 				}	
@@ -442,35 +437,6 @@ h4{
 	background-color: $bg-main-section;
 	min-height: 500px;
 	padding: 70px 0;
-	.card-review{
-		position: relative;
-		background-color: $bg-second-section;
-		padding:10px 10px;
-		margin:0 20px;
-		border-radius: 15px;
-
-		.yellowBar{
-			height: 180px;
-			width: 3px;
-			position: absolute;
-			left:0;
-			top:15%;
-			z-index: 1;
-			border-radius: 25%;
-			background-color:goldenrod;
-		}
-		.yellowStar{
-			color:goldenrod;
-		}
-		.my-img-container{
-			width: 60px;
-			
-			img{
-				width:100%;
-				border-radius:50%;
-			}
-		}
-	}
 }
 
 </style>

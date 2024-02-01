@@ -218,7 +218,7 @@ export default{
 						padding: 45px;
 
 						h4 {
-							margin-bottom: 20px;
+							margin-bottom: 25px;
 						}
 
 						* {
@@ -256,9 +256,13 @@ export default{
 		.lists-sections {
 			display: flex;
 			justify-content: space-between;
-			width: 80%;
+			width: 60%;
 			margin: 30px auto;
 			color: lightgray;
+
+			h3 {
+				padding-bottom: 20px;
+			}
 	
 			.get-in-touch {
 

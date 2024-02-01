@@ -83,7 +83,6 @@ export default{
 		},
 		inverterFlagLoader(){
 			this.store.flagLoader = !(this.store.flagLoader);
-			console.log(this.store.flagLoader)
 		}
 	},
 	unmounted(){

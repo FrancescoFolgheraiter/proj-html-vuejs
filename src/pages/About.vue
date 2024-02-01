@@ -1,4 +1,6 @@
 <script>
+//importazione store
+import  { store }  from '../components/store.js';
 export default{
 	data() {
 		return{
@@ -35,15 +37,21 @@ export default{
 					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
 					image: "img/f-3.png"
 				}
-			]
+			],
+			store,
 		};
 	},
 	components:{
 		
 	},
 	methods:{
-
-	}
+		inverterFlagLoader(){
+			this.store.flagLoader = !(this.store.flagLoader);
+		}
+	},
+	unmounted(){
+		this.inverterFlagLoader();
+	},
 }
 
 </script>

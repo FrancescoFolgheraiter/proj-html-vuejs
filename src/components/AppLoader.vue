@@ -21,7 +21,7 @@ export default{
 	mounted(){
 		setTimeout(() => {
 			this.inverterFlagLoader();
-		}, 2000);
+		}, 1000);
 	},
 
 }

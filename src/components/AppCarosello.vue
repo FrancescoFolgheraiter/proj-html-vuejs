@@ -45,10 +45,10 @@ export default{
 <template>
 	<div>
 		<div class="row">
-			<div class="col-5">
+			<div class="col-12 col-lg-5">
 				<CardReview :userObj="this.store.review[this.counter]"/>
 			</div>
-			<div class="col-5">
+			<div class="col-12 col-lg-5">
 				<CardReview v-if="(this.counter < this.store.review.length-1)" :userObj="this.store.review[this.counter+1]"/>
 				<CardReview v-if="(this.counter >= this.store.review.length-1)" :userObj="this.store.review[0]"/>
 			</div>

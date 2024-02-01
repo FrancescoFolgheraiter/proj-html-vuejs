@@ -138,12 +138,12 @@ export default{
 	<section id="about">
 		<div class="container">
 			<div class="row g-0">
-				<div class="col-5">
+				<div class="col-12 col-lg-5 mb-3 d-flex justify-content-center ">
 					<div class="my-img-container">
 						<img src="/img/about.png" alt="">
 					</div>
 				</div>
-				<div class="col-7">
+				<div class="col-12 col-lg-7 mb-3">
 					<div class="d-flex align-items-center ">
 						<div class="dog-logo">
 							<img src="/img/dog-icon.png" alt="">
@@ -178,7 +178,7 @@ export default{
 						DogMilo Pet care Services <br> For your best Friends
 					</h4>
 				</div>
-				<div v-for="(elem, i) in service" class="col-2 flex-grow-1 me-3">
+				<div v-for="(elem, i) in service" class="col-12 col-md-4 col-lg-2 me-3 mb-3">
 					<div class="card-service text-white text-center d-flex flex-column justify-content-center align-items-center p-3">
 						<div class="my-img-container mb-2">
 							<img :src="getImagePath('/img/' + elem.image)" alt="">
@@ -207,7 +207,7 @@ export default{
 	<!--quarta sezione-->
 	<section id="choose-us">
 		<div class="row g-0">
-			<div class="col-4">
+			<div id="left-col" class="col-12 col-lg-4 d-flex justify-content-center ">
 				<div class="my-img-container">
 					<img src="/img/why.png" alt="">
 				</div>
@@ -215,7 +215,7 @@ export default{
 			<div class="col-1">
 				<!--colonna vuota per staccare il contenuto-->
 			</div>
-			<div class="col-5">
+			<div id="right-col" class="col-12 col-lg-5">
 				<div class="row">
 					<div class="col-12">
 						<div class="d-flex align-items-center ">
@@ -278,7 +278,7 @@ export default{
 	<section id="review">
 		<div class="container">
 			<div class="row g-0">
-				<div class="col-5">
+				<div class="col-12 col-lg-5">
 					<h3 class="ps-5">
 						Review & Raiting
 					</h3>
@@ -289,7 +289,7 @@ export default{
 						It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using
 					</p>
 				</div>
-				<div class="col-7 d-flex">
+				<div class="col-12 col-lg-7">
 					<AppCarosello/>
 				</div>
 			</div>
@@ -428,7 +428,7 @@ h4{
 #choose-us{
 	background-color: $bg-main-section;
 //colonna dell'immagine grande della section choose us
-	.col-4:first-child{
+	#left-col{
 		.my-img-container{
 					max-width: 500px;
 				img{
@@ -437,7 +437,7 @@ h4{
 		}
 	}
 //seconda colonna dove è contenuto il testo della section choose us
-	.col-5:last-child{
+	#right-col{
 		padding: 70px 0;
 		.my-img-container{
 			max-width: 110px;

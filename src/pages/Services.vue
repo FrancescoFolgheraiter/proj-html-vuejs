@@ -72,10 +72,10 @@ export default{
 
 		<section id="passion" class="container">
 			<div class="row">
-				<div class="col">
+				<div class="col-5 pe-5">
 					<img src="/img/cani-service-passion.png" alt="cani-img">
 				</div>
-				<div class="col">
+				<div class="col-7">
 
 					<div class="passion-text">
 						<div class="row passion-intro">
@@ -169,15 +169,17 @@ export default{
 
 		.row {
 
-			justify-content: space-around;
+			justify-content: center;
+			align-items: center;
 
-			.col img {
-				width: 80%;
+			img {
+				width: 100%;
 				height: auto;
 			}
 
 			.passion-intro {
 				justify-content: center;
+				align-items: center;
 				line-height: 3rem;
 	
 				p {
@@ -229,7 +231,7 @@ export default{
 				background-color: white;
 				position: relative;
 				text-align: center;
-				width: calc(90% / 3);
+				width: calc(80% / 3);
 				padding: 0;
 
 				&:hover {
@@ -264,9 +266,6 @@ export default{
 					background-color: transparent;
 					width: 10px;
 					height: 10px;
-					// position: absolute;
-					// bottom: 0;
-					// left: 0;
 					border-top: 95px solid transparent;
 					border-left: 100px solid #7F7045;
 

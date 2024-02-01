@@ -116,17 +116,17 @@ export default{
 
 				<ul>
 					<li>
-						<div class="">
+						<div class="contact-me-icon">
 							<img src="/img/send.png" alt="send.png">
 						</div>
-						<div class="">4500 Mercantile plaza , Suite 300 , Fort Worth , TX,76137,USA</div>
+						<div class="adress">4500 Mercantile plaza , Suite 300 , Fort Worth , TX,76137,USA</div>
 					</li>
 					<li>
-						<div class=""></div>
+						<div class="contact-me-icon"></div>
 						<div class="">+0 123-456-7890</div>
 					</li>
 					<li>
-						<div class="">
+						<div class="contact-me-icon">
 							<img src="/img/email.png" alt="email.png">
 						</div>
 						<div class="">info@example.com</div>
@@ -157,7 +157,7 @@ export default{
 		}
 
 		li {
-			font-size: 0.9rem;
+			font-size: 1rem;
 			line-height: 2rem;
 		}
 
@@ -256,7 +256,7 @@ export default{
 		.lists-sections {
 			display: flex;
 			justify-content: space-between;
-			width: 65%;
+			width: 80%;
 			margin: 30px auto;
 			color: lightgray;
 	
@@ -272,16 +272,18 @@ export default{
 					display: flex;
 					text-align: center;
 					vertical-align: middle;
-
+					
 					a {
 						
 						width: 25px;
 						height: 25px;
 						border-radius: 10%;
 						margin-right: 10px;
-						justify-content: flex-start;
-						align-content: center;
 						line-height: 50px;
+						display: flex;
+						justify-content: center;
+						align-content: center;
+						flex-wrap: wrap;
 					}
 				}
 			}
@@ -302,7 +304,11 @@ export default{
 				ul li {
 					display: flex;
 
-					:first-child {
+					.adress{
+						line-height: 1.2rem;
+					}
+
+					.contact-me-icon {
 						width: 40px;
 
 						img {
@@ -313,6 +319,18 @@ export default{
 				}
 
 			}
+		}
+
+		hr{
+			width: 90%;
+			margin: 0 auto;
+		}
+
+		.copywright {
+			color: grey;
+			text-align: center;
+			padding: 30px;
+			font-size: 0.9rem;
 		}
 	}
 

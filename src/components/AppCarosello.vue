@@ -1,5 +1,7 @@
 <script>
+//importazione store
 import  { store }  from './store.js';
+//importazione componente
 import CardReview from './CardReview.vue';
 
 export default{

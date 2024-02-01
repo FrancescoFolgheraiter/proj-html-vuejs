@@ -61,5 +61,6 @@ export const store =reactive ({
             userImage:"t4.png",
             stars:5
         },
-    ]
+    ],
+    flagLoader:true,
 });

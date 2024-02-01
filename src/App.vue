@@ -3,6 +3,9 @@
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 import AppFooter from './components/AppFooter.vue';
+//importazioni componenti 
+import AppLoader from './components/AppLoader.vue';
+//importazione store
 import  { store }  from './components/store.js';
 
 
@@ -15,7 +18,8 @@ export default{
 	components:{
 		AppHeader,
 		AppMain,
-		AppFooter
+		AppFooter,
+		AppLoader
 	},
 	methods:{
 
@@ -25,6 +29,7 @@ export default{
 </script>
 
 <template>
+	<AppLoader v-if="(store.flagLoader)"/>
 	<AppHeader/>
 	<AppMain/>
 	<AppFooter/>

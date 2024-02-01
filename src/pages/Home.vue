@@ -1,7 +1,9 @@
 <script>
 //importazione js bootstrap
 import * as bootstrap from 'bootstrap';
-
+//importazione store
+import  { store }  from '../components/store.js';
+//importazione componente
 import AppCarosello from '../components/AppCarosello.vue';
 
 export default{
@@ -68,6 +70,8 @@ export default{
 					stars:5
 				},
 			],
+			store,
+			autoplay:null,
 		};
 	},
 	components:{
@@ -77,7 +81,15 @@ export default{
 		getImagePath: function(imgPath){
 			return new URL(imgPath, import.meta.url).href;
 		},
-	}
+		inverterFlagLoader(){
+			this.store.flagLoader = !(this.store.flagLoader);
+		}
+	},
+	unmounted(){
+		this.inverterFlagLoader();
+	},
+
+
 }
 
 </script>
@@ -86,7 +98,7 @@ export default{
 	<!--Prima sezzione-->
 	<section id="welcome">
 		<div class = "container">
-			<div class = "row">
+			<div class = "row g-0">
 				<div class = "col-5 d-flex flex-column justify-content-center text-white ">
 					<h2 class="mb-4">
 						Welcome to <br> <span class="fw-normal">DogMilo</span>  Pets
@@ -125,7 +137,7 @@ export default{
 	<!--seconda sezione-->
 	<section id="about">
 		<div class="container">
-			<div class="row">
+			<div class="row g-0">
 				<div class="col-5">
 					<div class="my-img-container">
 						<img src="/img/about.png" alt="">
@@ -157,7 +169,7 @@ export default{
 	<!--terza sezione-->
 	<section id="service">
 		<div class="container">
-			<div class="row">
+			<div class="row g-0">
 				<div class="col-12 text-center">
 					<h3>
 						Service
@@ -166,7 +178,7 @@ export default{
 						DogMilo Pet care Services <br> For your best Friends
 					</h4>
 				</div>
-				<div v-for="(elem, i) in service" class="col-2 flex-grow-1">
+				<div v-for="(elem, i) in service" class="col-2 flex-grow-1 me-3">
 					<div class="card-service text-white text-center d-flex flex-column justify-content-center align-items-center p-3">
 						<div class="my-img-container mb-2">
 							<img :src="getImagePath('/img/' + elem.image)" alt="">
@@ -179,11 +191,13 @@ export default{
 						<div class="mb-4">
 							{{ elem.text }}
 						</div>
-						<div class="circle d-flex justify-content-center align-items-center">
-							<div class="my-arrow-container">
-								<img src="/img/right.png" alt="">
+						<routerLink :to="{name: 'service'}">
+							<div class="circle d-flex justify-content-center align-items-center">
+								<div class="my-arrow-container">
+									<img src="/img/right.png" alt="go-service">
+								</div>
 							</div>
-						</div>
+						</routerLink>		
 					</div>
 				</div>
 			</div>
@@ -192,7 +206,7 @@ export default{
 	<!--fine terza sezione-->
 	<!--quarta sezione-->
 	<section id="choose-us">
-		<div class="row">
+		<div class="row g-0">
 			<div class="col-4">
 				<div class="my-img-container">
 					<img src="/img/why.png" alt="">
@@ -263,7 +277,7 @@ export default{
 	<!--quinta sezione-->
 	<section id="review">
 		<div class="container">
-			<div class="row">
+			<div class="row g-0">
 				<div class="col-5">
 					<h3 class="ps-5">
 						Review & Raiting
@@ -282,10 +296,12 @@ export default{
 		</div>
 	</section>
 	<!--fine quinta sezione-->
+
 </template>
 
 <style lang ="scss" scoped>
 @use "../assets/scss/partials/variables.scss" as *;
+
 //general
 h3{
 	color:#838586;

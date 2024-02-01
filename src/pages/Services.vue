@@ -1,4 +1,6 @@
 <script>
+//importazione store
+import  { store }  from '../components/store.js';
 export default{
 	data() {
 		return{
@@ -33,14 +35,20 @@ export default{
 					title:"Pet Sitting",
 					text:"The standard chunk of Lorem Ipsum used since."
 				},
-			]
+			],
+			store
 		};
 	},
 	components:{
 		
 	},
 	methods:{
-
+		inverterFlagLoader(){
+			this.store.flagLoader = !(this.store.flagLoader);
+		}
+	},
+	unmounted(){
+		this.inverterFlagLoader();
 	}
 }
 

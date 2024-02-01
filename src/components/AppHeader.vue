@@ -1,35 +1,10 @@
 <script>
+import  { store }  from './store.js';
+
 export default{
 	data() {
 		return{
-			socials: [
-				{
-					app: "Facebook",
-					color: "#3744B3",
-					icon: "fa-brands fa-facebook"
-				},
-				{
-					app: "Twitter",
-					color: "#7CC6C5",
-					icon: "fa-brands fa-twitter"
-				},
-				{
-					app: "Instagram",
-					color: "#A329A8",
-					icon: "fa-brands fa-instagram"
-				},
-				{
-					app: "Linkedin",
-					color: "#1164C2",
-					icon: "fa-brands fa-linkedin"
-				},
-				{
-					app: "Pinterest",
-					color: "#B61220",
-					icon: "fa-brands fa-pinterest"
-				}
-
-			],
+			store,
 			navigatioItems: [
 				{
 					label: 'Home',
@@ -47,13 +22,28 @@ export default{
 					label: 'Contact',
 					link: '/contact'
 				},
-			]
+			],
+			homeDropdownOpen: false,
+			aboutDropdownOpen: false,
+			activeDropdown: null,
 		};
 	},
 	components:{
 		
 	},
 	methods:{
+		showHomeDropdown(){
+			this.homeDropdownOpen = true
+		},
+		hideHomeDropdown() {
+			this.homeDropdownOpen = false
+		},
+		showAboutDropdown() {
+			this.aboutDropdownOpen = true
+		},
+		hideAboutDropdown() {
+			this.aboutDropdownOpen = false
+		}
 
 	}
 }
@@ -74,9 +64,11 @@ export default{
 						+0 123-456-7890
 					</div>
 					<div class="col socials">
-						<div v-for="(social, i) in socials" 
+						<div v-for="(social, i) in store.socials" 
 						:style="{backgroundColor: social.color}">
-							<i :class="social.icon"></i>
+							<a href="#">
+								<i :class="social.icon"></i>
+							</a>							
 						</div>
 						
 					</div>
@@ -94,78 +86,86 @@ export default{
 
 					<div class="col-9 prova-nav">
 
-						<nav>
-							<ul>
-								<li>
-									<routerLink :to="{name: 'home'}">
-										Home
-									</routerLink>									
+						<nav class="navbar navbar-expand-lg navbar-light">
+							<ul class="navbar-nav mr-auto">
+								<li class="nav-item dropdown" 
+									@mouseover="showHomeDropdown" 
+									@mouseleave="hideHomeDropdown"
+									>
+									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										Home											
+									</a>
+									<div class="dropdown-menu" 
+									v-if="homeDropdownOpen"
+									:class="{ show: homeDropdownOpen }" aria-labelledby="navbarDropdown">
+										<a class="dropdown-item" href="#">
+											<routerLink :to="{name: 'home'}">
+											Home One
+											</routerLink>
+										</a>
+										<a class="dropdown-item" href="#">
+											<routerLink :to="{name: 'home'}">
+											Home Two
+											</routerLink>
+										</a>
+										<a class="dropdown-item" href="#">
+											<routerLink :to="{name: 'home'}">
+												Home Three
+											</routerLink>
+										</a>
+									</div>							
 								</li>
-								<li>
-									<routerLink :to="{name: 'about'}">
+
+
+								<li class="nav-item dropdown" 
+									@mouseover="showAboutDropdown" 
+									@mouseleave="hideAboutDropdown" 
+									>
+									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										About
-									</routerLink>									
+									</a>
+									<div class="dropdown-menu" 
+									v-if="aboutDropdownOpen"
+									:class="{ show: aboutDropdownOpen }" aria-labelledby="navbarDropdown">
+										<a class="dropdown-item" href="#">
+											<routerLink :to="{name: 'about'}">
+												About One
+											</routerLink>
+										</a>
+										<a class="dropdown-item" href="#">
+											<routerLink :to="{name: 'about'}">
+												About Two
+											</routerLink>
+										</a>
+									</div>							
 								</li>
-								<li>
-									<routerLink :to="{name: 'service'}">
-										Services
-									</routerLink>									
+
+								<li class="nav-item">
+									<a>
+										<routerLink :to="{name: 'service'}">
+											Services
+										</routerLink>
+									</a>
+																		
 								</li>
-								<li>
-									Training
+								<li class="nav-item">
+									<a href="#">
+										Training
+									</a>
+									
 								</li>
-								<li>
-									Blogs
+								<li class="nav-item">
+									<a href="#">
+										Blogs
+									</a>
+									
 								</li>
-								<button class="rounded-pill">
+								<button class="rounded-pill nav-item">
 									Get In Touch
 								</button>
 							</ul>
 						</nav>
-<!--<nav class="navbar navbar-expand-lg">
-						
-							<div id="navbarNavDropdown">
-								<ul class="navbar-nav">
-									<li class="nav-item dropdown">
-										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											Home
-										</a>
-										<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-											<a class="dropdown-item" href="#">Home One</a>
-											<a class="dropdown-item" href="#">Home Two</a>
-											<a class="dropdown-item" href="#">Home Three</a>
-										</div>
-									</li>
 
-									<li class="nav-item dropdown">
-										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											About
-										</a>
-										<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-											<a class="dropdown-item" href="#">About One</a>
-											<a class="dropdown-item" href="#">About Two</a>
-										</div>
-									</li>
-
-									<li class="nav-item active">
-										<a class="nav-link" href="#">Services <span class="sr-only">(current)</span></a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="#">Training</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="#">Blogs</a>
-									</li>
-
-									<button class="rounded-pill">
-										Get In Touch
-									</button>
-
-								
-								</ul>
-							</div>
-						</nav> -->
-						
 					</div>
 
 				</div>
@@ -210,9 +210,15 @@ export default{
 		justify-content: center;
 		align-content: center;
 
-		>i {
-			color: white;
+		a {
+			padding: 5px;
+
+			>i {
+				color: white;
+			}
 		}
+
+		
 	}
 }
 
@@ -236,6 +242,7 @@ button {
 	display: inline-block;
 	font-size: 1em;
 	font-weight: bold;
+	width: 180px;
 }
 .col-9 {
 	justify-content: space-between;
@@ -243,22 +250,23 @@ button {
 }
 .prova-nav {
 	nav {
+		
 		color: #fff;
 		padding: 10px;
 
 		ul {
 			list-style-type: none;
-			margin: 0;
+			margin-left: 60px;
 			padding: 0;
-
+			li {
+				width: 100px;
+				margin: 0 10px;
+			}
 			li, a {
 				display: inline-block;
-				margin-right: 10px;	
 				color: $text-color;
 				text-decoration: none;
 				
-				
-
 			}
 		}
 	

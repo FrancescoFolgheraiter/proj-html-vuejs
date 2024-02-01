@@ -1,4 +1,6 @@
 <script>
+//importazione store
+import  { store }  from '../components/store.js';
 export default{
 	data() {
 		return{
@@ -35,15 +37,21 @@ export default{
 					text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
 					image: "img/f-3.png"
 				}
-			]
+			],
+			store,
 		};
 	},
 	components:{
 		
 	},
 	methods:{
-
-	}
+		inverterFlagLoader(){
+			this.store.flagLoader = !(this.store.flagLoader);
+		}
+	},
+	unmounted(){
+		this.inverterFlagLoader();
+	},
 }
 
 </script>
@@ -74,11 +82,16 @@ export default{
 		<div class="container">
 			<div class="row">
 				
-				<div class="col-6">
-					<h6>
-						<img src="/img/d-1.png" alt="">
-						About Dogmilo
-					</h6>
+				<div class="col-6 text-about-container">
+					<div class="sub-title d-flex align-items-center ">
+						<div class="dog-logo">
+							<img src="/img/dog-icon.png" alt="">
+						</div>
+						<h6>
+							About Dogmilo
+						</h6>
+					</div>
+					
 					<h2>
 						Welcome DogMilo Pets
 					</h2>
@@ -104,7 +117,9 @@ export default{
 	<section id="table">
 		<div class="container">
 			<div class="row">
-				<div v-for="(section, i) in aboutDogmilo" class="col-4 aboutdog">
+				<div v-for="(section, i) in aboutDogmilo" 
+				class="col-4 aboutdog"
+				:class="{'reverse': i == [1] }">
 					<div class="text-container-table">
 						<h3>
 							{{ section.title }}
@@ -155,14 +170,14 @@ export default{
 						Fresh & Healthy Food
 					</h2>
 					<div v-for="(food, i) in petFood" class="sections-container">
-						<div class="icon-image-container"> 
+						<div class="icon-image-container me-4"> 
 							<div class="dot-img-container">
 								<img :src="food.image" :alt="food.title">
 							</div>
 							
 						</div>
-						<div> 
-							<div> 
+						<div class="text-food-container"> 
+							<div class="food-title"> 
 								{{ food.title }}
 							</div>
 							<div>
@@ -185,7 +200,7 @@ export default{
 	
 }
 #jumbotron {
-	background-image: url(/img/smalldog.jpeg);
+	background-image: url(/img/banner4.png);
 	background-repeat: no-repeat cover;
 	background-size: 100%;
 	background-position-y: center;
@@ -215,40 +230,70 @@ export default{
 }
 
 #about {
+	.text-about-container {
+		padding-top: 60px;
+		h2 {
+			margin-bottom: 15px;
+		}
+
+		.sub-title{
+			margin-bottom: 20px;
+			.dog-logo {
+				margin-right: 15px;
+			}
+			h6 {
+				color: $main-color;
+			}
+		}
+
+		
+	}
+	
 	.img-container img {
 		height: 100%;
 		width: 100%;
 		object-fit: cover;
 	}
 }
+#table {
+	.row {
+		height: 100%;
+		.aboutdog {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-start;
+			margin: 0;
+			padding: 0;
+			align-content: normal;
 
-.aboutdog {
-	display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    margin: 0;
-    padding: 0;
-    align-content: normal;
-
-	.text-container-table {
-		display: flex;
-		flex-wrap: wrap;
-		height: 45%;
-		color: white;
-		background-color: $main-color;
-		align-items: center;
-		padding: 0 20px;
-	}
-	.img-container-table {
-		height: 55%;
-		img {
-			width: 100%;
+			.text-container-table {
+				display: flex;
+				flex-wrap: wrap;
+				height: 49%;
+				color: white;
+				background-color: $main-color;
+				align-items: center;
+				padding: 0 20px;
+			}
+			.img-container-table {
+				height: 51%;
+				width: 100%;
+				img {
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}
+		.reverse {
+			flex-direction: column-reverse;
 		}
 	}
 }
 
+
 #story {
 	height: 700px;
+	margin-top: 50px;
 	.container {
 		height: 600px;
 		display: flex;
@@ -261,6 +306,11 @@ export default{
 
 		h6 {
 			color: $main-color;
+		}
+		h2 {
+			margin-top: 25px;
+			margin-bottom: 40px;
+			font-weight: 700;
 		}
 	}
 	.img-video {    
@@ -282,13 +332,20 @@ export default{
 	.text-container {
 		display: flex;
 		flex-wrap: wrap;
+		margin-top: 20px;
+		padding-left: 70px;
+
+		h2 {
+			font-weight: bold;
+		}
 
 		.sections-container {
 			display: flex;
 		
 			.icon-image-container {
 				height: 80px;
-				width: 80px;
+				width: 145px;
+				display: flex;
 
 				.dot-img-container {
 					width: 100%;
@@ -304,6 +361,12 @@ export default{
 						width: 80%;
 						height: 80%;
 					}
+				}
+			}
+
+			.text-food-container {
+				.food-title {
+					font-weight: bold;
 				}
 			}
 		}

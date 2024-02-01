@@ -56,17 +56,25 @@ export default{
 	<footer>
 		<section class="footer-newsletter">
 			<div class="newsletter">
-				<div class="img-newsletter">
-					<img src="/img/news.png" alt="news.png">
-				</div>
-				<div class="sub-newsletter">
-					<h2>Subscribe to Our Newsletter</h2>
-					<form action="">
-						<div class="input-group mb-3">
-							<input type="text" class="form-control" placeholder="Email" aria-label="Recipient's username" aria-describedby="basic-addon2">
-							<span class="input-group-text" id="basic-addon2">@</span>
+
+				<div class="row">
+
+					<div class="col-4">
+						<div class="img-newsletter">
+							<img src="/img/news.png" alt="news.png">
 						</div>
-					</form>
+					</div>
+					<div class="col-8">
+						<div class="sub-newsletter">
+							<h4>Subscribe to Our Newsletter</h4>
+							<form action="">
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="Email" aria-label="Recipient's username" aria-describedby="basic-addon2">
+									<span class="input-group-text" id="basic-addon2">@</span>
+								</div>
+							</form>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -78,9 +86,14 @@ export default{
 					Have a Question for us ?
 					We'll answer your problem here
 				</p>
-				<p v-for="(social, i) in store.socials">
-					<i :class="social.icon"></i>
-				</p>
+
+				<div class="social-icon">
+
+					<a href="#" v-for="(social, i) in store.socials"
+					:style="{backgroundColor: social.color}">
+						<i :class="social.icon"></i>
+					</a>
+				</div>
 			</section>
 			<section class="links-and-contacts">
 				<ul>
@@ -90,7 +103,9 @@ export default{
 						</h3>
 						<ul>
 							<li v-for = "(link, j) in lists[i].links">
-								{{ listItem.links[j] }}
+								<a href="#">
+									{{ listItem.links[j] }}
+								</a>
 							</li>
 						</ul>
 					</li>
@@ -101,7 +116,9 @@ export default{
 
 				<ul>
 					<li>
-						<div class="">freccia</div>
+						<div class="">
+							<img src="/img/send.png" alt="send.png">
+						</div>
 						<div class="">4500 Mercantile plaza , Suite 300 , Fort Worth , TX,76137,USA</div>
 					</li>
 					<li>
@@ -109,14 +126,194 @@ export default{
 						<div class="">+0 123-456-7890</div>
 					</li>
 					<li>
-						<div class="">posta</div>
+						<div class="">
+							<img src="/img/email.png" alt="email.png">
+						</div>
 						<div class="">info@example.com</div>
 					</li>
 				</ul>
 			</section>
 		</div>
+		<hr>
+		<section class="copywright">
+			<p>
+				Copywright © 2024 dogmilo-wordpress | Powered by dogmilo-wordpress
+			</p>
+		</section>
 	</footer>
 </template>
 
 <style lang ="scss" scoped>
+
+@use "../assets/scss/partials/variables.scss" as *;
+
+	footer {
+
+		background-color: black;
+		color: white;
+
+		h3 {
+			color: $second-color;
+		}
+
+		li {
+			font-size: 0.9rem;
+			line-height: 2rem;
+		}
+
+		ul,
+		ol,
+		li {
+			list-style: none;
+			padding: 0px;
+		}
+
+		a {
+			text-decoration: none;
+			color: lightgray;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		// Sezione Newsletter
+		.footer-newsletter {
+	
+			
+			width: 70%;
+			margin: 180px auto 0;
+			color: white;
+			position: relative;
+			bottom: 100px;
+			
+			
+			// Contenuto newsletter
+			.newsletter {
+				
+				height: 200px;
+				border-radius: 10px;
+				background-color: $second-color;
+				position: relative;
+				
+				
+				.row{
+
+					height: 100%;
+					align-content: center;
+					justify-content: space-evenly;
+					.img-newsletter {
+						width: 320px;
+						position: absolute;
+						bottom: 0;
+						left: 0;
+						margin: 0px 10px;
+						
+						img {
+							width: 100%;
+						}
+					}
+
+					.sub-newsletter {
+						padding: 45px;
+
+						h4 {
+							margin-bottom: 20px;
+						}
+
+						* {
+							border-radius: 0%;
+
+						}
+
+						form {
+
+							
+							span {
+								border: black;
+								line-height: 2rem;
+								background-color: black;
+								color: white;
+								padding: 0.5rem 2rem;
+								font-size: 1.8rem;
+							}
+
+							input {
+								width: 80%;
+								font-size: 1rem;
+								
+							}
+						
+						}
+						
+
+						
+					}
+				}
+			}
+		}
+	
+		.lists-sections {
+			display: flex;
+			justify-content: space-between;
+			width: 65%;
+			margin: 30px auto;
+			color: lightgray;
+	
+			.get-in-touch {
+
+				text-align: left;
+
+				p {
+					line-height: 2rem;
+				}
+	
+				.social-icon {
+					display: flex;
+					text-align: center;
+					vertical-align: middle;
+
+					a {
+						
+						width: 25px;
+						height: 25px;
+						border-radius: 10%;
+						margin-right: 10px;
+						justify-content: flex-start;
+						align-content: center;
+						line-height: 50px;
+					}
+				}
+			}
+	
+			.links-and-contacts {
+	
+				width: 100%;
+	
+				
+				> ul {
+					display: flex;
+					justify-content: space-evenly;
+				}
+			}
+
+			.contact-me {
+
+				ul li {
+					display: flex;
+
+					:first-child {
+						width: 40px;
+
+						img {
+							width: 20px;
+							height: 20px;
+						}
+					}
+				}
+
+			}
+		}
+	}
+
 </style>

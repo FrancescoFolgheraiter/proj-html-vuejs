@@ -47,7 +47,7 @@ export default{
 </script>
 
 <template>
-	<main>
+
 		<section id="service-jumbo">
 			<div class="jumbo container">
 				<div class="jumbo-text">
@@ -95,20 +95,26 @@ export default{
 				<p class="intro-sect">Service</p>
 				<h2>DogMilo Pet Care Services For Your Best Friends.</h2>
 				<div class="row">
-					<div v-for = "(card, i) in Cards" class="service-card m-3 pb-5">
-						<img :src="card.url" :alt="card.title" class="card-icon">
-						<h3 class="card-title">{{ card.title }}</h3>
-						<p class="card-text">{{ card.text }}</p>
-						<div class="card-arrow">
-							<a href="#">
-								<img src="/img/uparrow.png" alt="up-arrow" class="up-arrow">
-							</a>
+					<div v-for = "(card, i) in Cards" class="service-card m-3">
+
+						<div class="my-card">
+
+							<img :src="card.url" :alt="card.title" class="card-icon">
+							<h3 class="card-title">{{ card.title }}</h3>
+							<p class="card-text">{{ card.text }}</p>
+							<div class="card-arrow">
+								<div>
+									<a href="#">
+										<img src="/img/uparrow.png" alt="up-arrow" class="up-arrow">
+									</a>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-	</main>
+
 </template>
 
 <style lang ="scss" scoped>
@@ -218,6 +224,11 @@ export default{
 				width: calc(90% / 3);
 				padding: 0;
 
+				&:hover {
+					background-color: #7F7045;
+					transition: 0.4s;
+				}
+
 				
 	
 				.card-icon {
@@ -238,18 +249,18 @@ export default{
 					font-weight: 500;
 					font-size: 0.9rem;
 					width: 50%;
-					margin: 10px auto;
+					margin: 20px auto;
 				}
 
 				.card-arrow {
-					// background-color: #7F7045;
-					width: 0px;
-					height: 0px;
-					position: absolute;
-					bottom: 0;
-					left: 0;
+					background-color: transparent;
+					width: 10px;
+					height: 10px;
+					// position: absolute;
+					// bottom: 0;
+					// left: 0;
 					border-top: 95px solid transparent;
-					border-left: 100px dashed #7F7045;
+					border-left: 100px solid #7F7045;
 
 					a {
 						background-color: #7F7045;
@@ -258,8 +269,8 @@ export default{
 							position: absolute;
 							bottom: 0;
 							left: 0;
-							width: 30px;
-							height: 30px;
+							width: 50px;
+							height: 50px;
 						}
 					}
 

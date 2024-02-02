@@ -15,7 +15,6 @@ export default{
 	methods:{
 		inverterFlagLoader(){
 			this.store.flagLoader = !(this.store.flagLoader);
-			console.log(this.store.flagLoader)
 		}
 	},
 	mounted(){
@@ -45,7 +44,7 @@ export default{
   width: 100%;
   height: 100%;
   background-color: black;
-  opacity: 0.5;
+  opacity: 0.7;
   display: flex;
   justify-content: center;
   align-items: center;

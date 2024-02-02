@@ -95,20 +95,22 @@ export default{
 									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										Home											
 									</a>
-									<div class="dropdown-menu" 
+									<div class="dropdown-menu list-item-menu" 
 									v-if="homeDropdownOpen"
 									:class="{ show: homeDropdownOpen }" aria-labelledby="navbarDropdown">
-										<a class="dropdown-item" href="#">
+										<a class="dropdown-item link-dropdown-item" href="#">
 											<routerLink :to="{name: 'home'}">
 											Home One
 											</routerLink>
 										</a>
-										<a class="dropdown-item" href="#">
+										<hr class="dropdown-divider">
+										<a class="dropdown-item link-dropdown-item" href="#">
 											<routerLink :to="{name: 'home'}">
 											Home Two
 											</routerLink>
 										</a>
-										<a class="dropdown-item" href="#">
+										<hr class="dropdown-divider">
+										<a class="dropdown-item link-dropdown-item" href="#">
 											<routerLink :to="{name: 'home'}">
 												Home Three
 											</routerLink>
@@ -124,15 +126,16 @@ export default{
 									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										About
 									</a>
-									<div class="dropdown-menu" 
+									<div class="dropdown-menu list-item-menu" 
 									v-if="aboutDropdownOpen"
 									:class="{ show: aboutDropdownOpen }" aria-labelledby="navbarDropdown">
-										<a class="dropdown-item" href="#">
+										<a class="dropdown-item link-dropdown-item" href="#">
 											<routerLink :to="{name: 'about'}">
 												About One
 											</routerLink>
 										</a>
-										<a class="dropdown-item" href="#">
+										<hr class="dropdown-divider">
+										<a class="dropdown-item link-dropdown-item" href="#">
 											<routerLink :to="{name: 'about'}">
 												About Two
 											</routerLink>
@@ -261,6 +264,7 @@ button {
 			li {
 				width: 100px;
 				margin: 0 10px;
+
 			}
 			li, a {
 				display: inline-block;
@@ -284,11 +288,23 @@ button {
 			color: $second-color
 		}
 
+
 }
+.list-item-menu {
+	border-radius: 0%;
+	border-color: transparent;
+}
+
+.link-dropdown-item{
+	width: 180px;
+	height: 40px;	
+}
+
 .navbar-nav {
 	display: flex;
     justify-content: space-evenly;
     align-items: baseline;
 }
-
+    
 </style>
+

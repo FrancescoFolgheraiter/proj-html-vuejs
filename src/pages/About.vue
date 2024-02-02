@@ -1,6 +1,9 @@
 <script>
+//importazione js bootstrap
+import * as bootstrap from 'bootstrap';
 //importazione store
 import  { store }  from '../components/store.js';
+
 export default{
 	data() {
 		return{
@@ -141,7 +144,8 @@ export default{
 
 	<!-- Inizio quarta sezione -->
 	<section id="story">
-		<div class="container">
+		<section class="background-gray">
+			<div class="container">
 			<div class="text-section">
 				<h6>
 					Our Story
@@ -152,9 +156,29 @@ export default{
 				</h2>
 			</div>
 			<div class="img-video">
-				<img src="/img/video-bg.png" alt="">
+				<div class="button-play-container">
+					<button type="button" id="play-button" @focus="openModal" data-bs-toggle="modal" data-bs-target="#videoYoutube">
+						<img src="/img/play.png" alt="">
+					</button>
+				</div>				
+			</div>
+
+			<div class="modal fade modal-lg" id="videoYoutube" tabindex="-1" aria-labelledby="videoYoutubeLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 class="modal-title fs-5" id="videoYoutubeLabel">Dog Milo</h1>
+							<button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<iframe width="700" height="350" src="https://www.youtube.com/embed/c1NgIvjXCMA?si=6dZobOJ7YuC0HSC8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
+		</section>
+		
 	</section>
 	<!-- Fine quarta sezione -->
 
@@ -162,21 +186,29 @@ export default{
 	<section id="food">
 		<div class="container">
 			<div class="row">
-				<div class="col-5 img-container">
-					<img src="/img/ser-card-3.png" alt="">
+				<div class="col-5">
+					<div class="img-food-container">
+						<img src="/img/ser-card-3.png" alt="">
+					</div>
 				</div>
+				
 				<div class="col-7 text-container">
-					<h2>
-						Fresh & Healthy Food
-					</h2>
-					<div v-for="(food, i) in petFood" class="sections-container">
-						<div class="icon-image-container me-4"> 
+					<div class="row">
+						<div class="col-12">
+							<h2>
+								Fresh & Healthy Food
+							</h2>
+						</div>
+					</div>
+					
+					<div v-for="(food, i) in petFood" class="row sections-container">
+						<div class="col-2 icon-image-container me-4"> 
 							<div class="dot-img-container">
 								<img :src="food.image" :alt="food.title">
 							</div>
 							
 						</div>
-						<div class="text-food-container"> 
+						<div class="col-10 text-food-container"> 
 							<div class="food-title"> 
 								{{ food.title }}
 							</div>
@@ -188,6 +220,8 @@ export default{
 				</div>
 			</div>
 		</div>
+		<section class="background-gray-food"></section>
+		
 
 	</section>
 	<!-- Fine quinta sezione -->
@@ -292,10 +326,10 @@ export default{
 
 
 #story {
-	height: 700px;
+	height: 770px;
 	margin-top: 50px;
 	.container {
-		height: 600px;
+		height: 475px;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
@@ -314,19 +348,52 @@ export default{
 		}
 	}
 	.img-video {    
+		background-image: url(/img/video-bg.png);
+		background-repeat: no-repeat;
+		background-size: 100%;
 		width: 85%;
+		height: 100%;	
 		display: flex;
 		justify-content: center;
+		align-items: center;
 
 		img {
 			width: 100%;
     		height: 100%;
 		}
+		.button-play-container {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: rgba(0, 0, 0, 0.5);
+
+			#play-button{
+				height: 90px;
+				width: 100px;
+				background-color: transparent;
+				border: transparent;
+			}
+		}
+		
 	}
+	.modal-header {
+		background-color: #4054b2;		
+	}
+}
+.background-gray {
+	background-color: #F6F6F6;
+	height: 500px;
+	width: 100%;
+	padding-top: 20px;
 }
 
 #food {
 	.img-container img {
+		width: 50%;
+	}
+	.img-food-container {
 		width: 100%;
 	}
 	.text-container {
@@ -341,15 +408,15 @@ export default{
 
 		.sections-container {
 			display: flex;
+			height: 80px;
 		
 			.icon-image-container {
 				height: 80px;
-				width: 145px;
-				display: flex;
+				width: 80px;
 
 				.dot-img-container {
-					width: 100%;
-					height: 100%;
+					width: 80px;
+					height: 80px;
 					background-color: #A69A79;
 					border-radius: 50%;
 					display: flex;
@@ -372,6 +439,13 @@ export default{
 		}
 	}
 
+}
+.background-gray-food{
+	background-color: #F6F6F6;
+    height: 650px;
+    width: 2144px;
+    margin-top: -555px;
+    margin-left: 520px;
 }
 
 </style>
